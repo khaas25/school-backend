@@ -435,6 +435,11 @@ app.put("/adminRequests/:id", async (req, res) => {
   }
 });
 
+
+app.get("/admins", async (req, res) => {
+  const admins = await Signup.find({ accountType: "admin" });
+  res.status(200).send(admins);
+});
 // //===============
 setInterval(async () => {
   console.log("data deleted");
