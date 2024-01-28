@@ -455,3 +455,17 @@ setInterval(async () => {
     }
   );
 }, 43200000);
+
+//// teacher requests for pending approval
+
+app.put("/teachers/:id", async (req, res) => {
+  try {
+    const _id = req.params.id;
+    const editUser = await Signup.findByIdAndUpdate(_id, req.body, {
+      new: true,
+    });
+    res.status(200).send(editUser);
+  } catch {
+    res.status(500).send("Server Crashed");
+  }
+});
